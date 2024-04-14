@@ -14,7 +14,7 @@
 
 | Download |Link|
 | ------------- | ------------- |
-| Latest version|[Click Here](https://github.com/Niix-Dan/CommandItems/releases/download/Releases/CommandItems.jar)|
+| Latest version|[Click Here](https://github.com/Niix-Dan/CommandItems/releases/download/1.0/CommandItems.jar)|
 | Releases|[Click Here](https://github.com/Daniel-code15/CommandItems/releases)|
 
 
