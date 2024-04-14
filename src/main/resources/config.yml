@@ -1,0 +1,68 @@
+
+# 1k money example
+ExampleMoney:
+  ItemName: "&a1k MONEY" # Identity of the item (will check when you click with an item)
+  Material: "PAPER"
+  Action: BOTH # Actions: [L_CLICK, R_CLICK, BOTH]
+  Consumable: true
+
+  Commands:
+    Player: []
+    Server:
+      - "money give %player% 1000"
+
+  Extras:
+    CustomTitle:
+      Enabled: true
+      Title: "&aMONEY"
+      Subtitle: "&fYou received 1k Money"
+
+    Sounds:
+      Enabled: true
+      List: # SOUND:pitch:tick
+        - "entity.firework_rocket.launch:1.0:0"
+        - "entity.player.levelup:1.2:10"
+        - "entity.player.levelup:1.6:10"
+
+    Chat:
+      Enabled: true
+      Messages:
+        - "&aYou received &f1k"
+
+    ActionBar:
+      Enabled: true
+      Message: "&f+1k MONEY"
+
+
+# 10k money example
+ExampleTpScroll:
+  ItemName: "&aTeleport Scroll - Spawn"
+  Material: "PAPER"
+  Action: BOTH
+  Consumable: true
+
+  Commands:
+    Player: []
+    Server:
+      - "tp %player% 0 120 0"
+
+  Extras:
+    CustomTitle:
+      Enabled: true
+      Title: "&aTeleported!"
+      Subtitle: "&f-1 Teleport Scroll"
+
+    Sounds:
+      Enabled: true
+      List:
+        - "entity.firework_rocket.launch:1.0:0"
+        - "entity.player.levelup:1.0:20"
+
+    Chat:
+      Enabled: true
+      Messages:
+        - "&aYou entered a protected area"
+
+    ActionBar:
+      Enabled: true
+      Message: "&fTeleported!"
