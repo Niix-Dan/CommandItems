@@ -5,10 +5,8 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -35,8 +33,6 @@ public class EventManager implements Listener {
             String req_action = pl.getConfig().getString(item + ".Action");
             String itemPermission = pl.getConfig().getString(item + ".Permission", "none");
 
-            //if (e.getItem().getType().toString().equalsIgnoreCase(pl.getConfig().getString(item + ".Material")) &&
-            //        e.getItem().getItemMeta().getDisplayName().equals(pl.getConfig().getString(item + ".ItemName").replaceAll("&", "§"))) {
             if (e.getItem().getItemMeta().getPersistentDataContainer().has(key, PersistentDataType.STRING) &&
                     e.getItem().getItemMeta().getPersistentDataContainer().get(key, PersistentDataType.STRING).equals(pl.getConfig().getString(item + ".ItemIdentifier", "cmdi_default")) &&
                     (itemPermission.equalsIgnoreCase("none") || p.hasPermission(itemPermission))) {

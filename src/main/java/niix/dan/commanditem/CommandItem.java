@@ -26,6 +26,7 @@ public final class CommandItem extends JavaPlugin {
 
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
+        reloadConfig();
 
         Bukkit.getPluginManager().registerEvents(new EventManager(key), this);
 
