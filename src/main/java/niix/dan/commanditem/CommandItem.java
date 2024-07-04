@@ -54,28 +54,11 @@ public final class CommandItem extends JavaPlugin {
                 meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, idenf);
                 item.setItemMeta(meta);
 
-                sender.sendMessage(ChatColor.GRAY + "[CommandItem] §aSuccess!");
+                sender.sendMessage(ChatColor.GRAY+"[CommandItem] §aSuccess!");
                 return true;
             }
             return false;
-        }/*
-        else
-
-        if(args.length >= 2 && args[0].equalsIgnoreCase("rename") && (sender instanceof Player)) {
-            Player player = (Player) sender;
-            ItemStack item = player.getInventory().getItemInMainHand();
-
-            if (item != null && item.getType() != Material.AIR) {
-                String name = Arrays.stream(args).skip(1).collect(Collectors.joining(" "));
-                ItemMeta meta = item.getItemMeta();
-                meta.setDisplayName(name.replace("&", "§"));
-                item.setItemMeta(meta);
-
-                sender.sendMessage(ChatColor.GRAY + "[CommandItem] §aSuccess!");
-            }
         }
-        */
-        //sender.sendMessage(cmd.getUsage());
 
         return false;
     }
