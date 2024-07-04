@@ -1,10 +1,11 @@
 
 # 1k money example
+# Grab an item and use (/cmdi set #1kmoney) to set the item identifier
 ExampleMoney:
-  ItemName: "&a1k MONEY" # Identity of the item (will check when you click with an item)
-  Material: "PAPER"
+  ItemIdentifier: "#1kmoney" # Identity of the item using tags (will check when you click with an item)
   Action: BOTH # Actions: [L_CLICK, R_CLICK, BOTH]
   Consumable: true
+  Permission: None # Permission required to use the item (None or Custom Permission)
 
   Commands:
     Player: []
@@ -36,10 +37,10 @@ ExampleMoney:
 
 # 10k money example
 ExampleTpScroll:
-  ItemName: "&aTeleport Scroll - Spawn"
-  Material: "PAPER"
+  ItemIdentifier: "#tpscroll"
   Action: BOTH
   Consumable: true
+  Permission: "CommandItem.use.tpscroll"
 
   Commands:
     Player: []
