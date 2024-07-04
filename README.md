@@ -14,7 +14,8 @@
 
 | Download |Link|
 | ------------- | ------------- |
-| Latest version|[Click Here](https://github.com/Niix-Dan/CommandItems/releases/download/1.0/CommandItems.jar)|
+| Latest Version|[Click Here](https://github.com/Niix-Dan/CommandItems/releases/latest/download/CommandItems.jar)|
 | Releases|[Click Here](https://github.com/Daniel-code15/CommandItems/releases)|
+| Build Artifacts|[Click Here](https://github.com/Niix-Dan/CommandItems/actions/workflows/maven-build.yml)|
 
 
