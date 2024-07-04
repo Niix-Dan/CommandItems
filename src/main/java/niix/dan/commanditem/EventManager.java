@@ -3,6 +3,8 @@ package niix.dan.commanditem;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
@@ -13,9 +15,11 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class EventManager implements Listener {
+    private final NamespacedKey key;
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void OnClick(PlayerInteractEvent e) {
@@ -24,18 +28,23 @@ public class EventManager implements Listener {
         Player p = e.getPlayer();
         Action a = e.getAction();
 
-        if ((a == Action.PHYSICAL) || (e.getItem() == null) || !e.getItem().hasItemMeta()) return;
+        if ((a == Action.PHYSICAL) || (e.getItem() == null) || !e.getItem().hasItemMeta() || e.getItem().getType() == Material.AIR) return;
 
         ConfigurationSection sec = pl.getConfig();
         for (String item: sec.getKeys(false)) {
             String req_action = pl.getConfig().getString(item + ".Action");
+            String itemPermission = pl.getConfig().getString(item + ".Permission", "none");
 
-            if (e.getItem().getType().toString().equalsIgnoreCase(pl.getConfig().getString(item + ".Material")) &&
-                    e.getItem().getItemMeta().getDisplayName().equals(pl.getConfig().getString(item + ".ItemName").replaceAll("&", "§"))) {
+            //if (e.getItem().getType().toString().equalsIgnoreCase(pl.getConfig().getString(item + ".Material")) &&
+            //        e.getItem().getItemMeta().getDisplayName().equals(pl.getConfig().getString(item + ".ItemName").replaceAll("&", "§"))) {
+            if (e.getItem().getItemMeta().getPersistentDataContainer().has(key, PersistentDataType.STRING) &&
+                    e.getItem().getItemMeta().getPersistentDataContainer().get(key, PersistentDataType.STRING).equals(pl.getConfig().getString(item + ".ItemIdentifier", "cmdi_default")) &&
+                    (itemPermission.equalsIgnoreCase("none") || p.hasPermission(itemPermission))) {
 
                 if (req_action.equalsIgnoreCase("BOTH") ||
                         (req_action.equalsIgnoreCase("R_CLICK")) && a == Action.RIGHT_CLICK_AIR ||
                         (req_action.equalsIgnoreCase("L_CLICK")) && a == Action.LEFT_CLICK_AIR) {
+
 
                     ExecuteCustomItem(pl, p, item);
                 }
@@ -77,8 +86,8 @@ public class EventManager implements Listener {
 
                 if (pl.getConfig().getBoolean(item + ".Extras.Chat.Enabled")) {
                     for (String msg: pl.getConfig().getStringList(item + ".Extras.Chat.Messages")) {
-                        msg = msg.replaceAll("&", "§");
-                        msg = msg.replaceAll("%player%", p.getName());
+                        msg = msg.replace("&", "§");
+                        msg = msg.replace("%player%", p.getName());
 
                         p.sendMessage(msg);
                     }
@@ -89,5 +98,10 @@ public class EventManager implements Listener {
                 }
             }
         }).runTask(pl);
+    }
+
+
+    public EventManager(NamespacedKey key) {
+        this.key = key;
     }
 }
