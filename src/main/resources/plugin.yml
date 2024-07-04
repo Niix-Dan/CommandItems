@@ -1,5 +1,5 @@
 name: CommandItems
-version: '1.1'
+version: '1.1.0'
 main: niix.dan.commanditem.CommandItem
 api-version: '1.13'
 load: STARTUP
@@ -8,7 +8,7 @@ website: https://github.com/Niix-Dan
 commands:
   commanditem:
     usage: /commanditem [reload,set]
-    permission: CommandItem.cmi
+    permission: CommandItem.cmdi
     aliases: ["cmdi"]
 permissions:
   CommandItem.cmdi:
