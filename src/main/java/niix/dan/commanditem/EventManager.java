@@ -54,17 +54,17 @@ public class EventManager implements Listener {
         (new BukkitRunnable() {
             public void run() {
                 for (String cmd: pl.getConfig().getStringList(item + ".Commands.Player")) {
-                    Bukkit.getServer().dispatchCommand((CommandSender) p, cmd.replaceAll("%player%", p.getName()));
+                    Bukkit.getServer().dispatchCommand((CommandSender) p, cmd.replace("%player%", p.getName()));
                 }
 
                 for (String cmd: pl.getConfig().getStringList(item + ".Commands.Server")) {
-                    Bukkit.getServer().dispatchCommand((CommandSender) Bukkit.getConsoleSender(), cmd.replaceAll("%player%", p.getName()));
+                    Bukkit.getServer().dispatchCommand((CommandSender) Bukkit.getConsoleSender(), cmd.replace("%player%", p.getName()));
                 }
 
                 if (pl.getConfig().getBoolean(item + ".Extras.CustomTitle.Enabled")) {
                     p.sendTitle(
-                            pl.getConfig().getString(item + ".Extras.CustomTitle.Title").replaceAll("&", "§"),
-                            pl.getConfig().getString(item + ".Extras.CustomTitle.Subtitle").replaceAll("&", "§")
+                            pl.getConfig().getString(item + ".Extras.CustomTitle.Title").replace("&", "§"),
+                            pl.getConfig().getString(item + ".Extras.CustomTitle.Subtitle").replace("&", "§")
                     );
                 }
 
@@ -90,7 +90,7 @@ public class EventManager implements Listener {
                 }
 
                 if (pl.getConfig().getBoolean(item + ".Extras.ActionBar.Enabled")) {
-                    p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(pl.getConfig().getString(item + ".Extras.ActionBar.Message").replaceAll("&", "§")));
+                    p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(pl.getConfig().getString(item + ".Extras.ActionBar.Message").replace("&", "§")));
                 }
             }
         }).runTask(pl);
