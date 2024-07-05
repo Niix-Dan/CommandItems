@@ -38,8 +38,8 @@ public class EventManager implements Listener {
                     (itemPermission.equalsIgnoreCase("none") || p.hasPermission(itemPermission))) {
 
                 if (req_action.equalsIgnoreCase("BOTH") ||
-                        (req_action.equalsIgnoreCase("R_CLICK")) && a == Action.RIGHT_CLICK_AIR ||
-                        (req_action.equalsIgnoreCase("L_CLICK")) && a == Action.LEFT_CLICK_AIR) {
+                        (req_action.equalsIgnoreCase("R_CLICK") && a == Action.RIGHT_CLICK_AIR) ||
+                        (req_action.equalsIgnoreCase("L_CLICK") && a == Action.LEFT_CLICK_AIR)) {
 
 
                     ExecuteCustomItem(pl, p, item);
