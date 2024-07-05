@@ -4,11 +4,7 @@
 name: Official Builds
 
 on:
-  release:
-    types: [created]
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build:
