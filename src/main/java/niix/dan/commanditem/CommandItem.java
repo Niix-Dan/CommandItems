@@ -23,6 +23,7 @@ public final class CommandItem extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         key = new NamespacedKey(this, "cmdi_executor");
+        new Metrics(this, 22567);
 
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
